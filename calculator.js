@@ -31,3 +31,13 @@ function operate(operator, num1, num2){
             return divide(num1, num2);
     }
 }
+
+const buttons = document.querySelectorAll("button");
+
+const resultContainer = document.querySelector(".results")
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        resultContainer.textContent += e.target.textContent;
+    });
+});
