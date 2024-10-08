@@ -59,7 +59,7 @@ buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         displayValue = e.target.textContent;
 
-        if (button.className === "number"){
+        if (button.className === "number" || button.className === "dotBtn"){
             resultContainer.textContent += displayValue;
             !isSecondOperand ? firstOperand += displayValue : secondOperand += displayValue;
             console.log(secondOperand, firstOperand)
@@ -78,13 +78,12 @@ buttons.forEach((button) => {
             isSecondOperand = false;
 
         } else if (button.className === "equalButtonBtn"){  
-            displayValue = operate(operator, +firstOperand, +secondOperand);
+            displayValue = Math.round(operate(operator, parseFloat(+firstOperand), parseFloat(+secondOperand)) * 100) / 100;
             resultContainer.textContent = displayValue;
             isSecondOperand = false;
             firstOperand = displayValue;
             secondOperand = 0;
-            
-        }  
+        } 
     });     
 });
 
