@@ -24,30 +24,69 @@ function operate(operator, num1, num2){
         case "-":
             return substract(num1, num2);
 
-        case "*":
+        case "x":
             return multiply(num1, num2);
 
-        case "/":
+        case "%":
             return divide(num1, num2);
     }
 }
 
-let firstOperand = 0;
-let operator = "";
+function isNumber(value) {
+    return typeof value === 'number';
+  }
+
+let firstOperand = 0; 
+let operator = ""; 
 let secondOperand = 0;
-let displayValue = 0
+let displayValue = 0;
+let isSecondOperand = false;
 
-// display result
+// Display result
 const buttons = document.querySelectorAll("button");
+const numbers = document.querySelectorAll(".number");
+const resultContainer = document.querySelector(".results");
 
-const resultContainer = document.querySelector(".results")
+function reset(){
+    firstOperand = 0;
+    operator = ""; 
+    secondOperand = 0;
+    displayValue = 0;
+    isSecondOperand = false;
+}
 
 buttons.forEach((button) => {
-    if(Number.isInteger(+button.textContent)){
-        button.addEventListener("click", (e) => {
-            resultContainer.textContent += e.target.textContent;
-            displayValue = +resultContainer.textContent;
-        }); 
-    }
+    button.addEventListener("click", (e) => {
+        displayValue = e.target.textContent;
+
+        if (button.className === "number"){
+            resultContainer.textContent += displayValue;
+            !isSecondOperand ? firstOperand += displayValue : secondOperand += displayValue;
+            console.log(secondOperand, firstOperand)
+            
+        } else if (button.className === "operator"){
+            resultContainer.textContent += displayValue;
+            operator = button.textContent;
+            isSecondOperand = true;
+        
+        } else if (button.className === "delete"){
+            resultContainer.textContent = "";
+            firstOperand = 0;
+            operator = ""; 
+            secondOperand = 0;
+            displayValue = 0;
+            isSecondOperand = false;
+
+        } else if (button.className === "equalButtonBtn"){  
+            displayValue = operate(operator, +firstOperand, +secondOperand);
+            resultContainer.textContent = displayValue;
+            isSecondOperand = false;
+            firstOperand = displayValue;
+            secondOperand = 0;
+            
+        }  
+    });     
 });
+
+
 
