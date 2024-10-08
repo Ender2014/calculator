@@ -14,7 +14,7 @@ body{
 
 }
 .container{
-    background: white;
+    background: rgb(50, 52, 53);
     width:  400px;
     height: 600px;
     border-radius: 10px;
@@ -25,10 +25,11 @@ body{
 }
 
 .results{
+    background: rgb(161, 175, 118);
     border-radius: 10px;
     border: 2px solid black;
     padding: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
     display:flex;
 }
 
@@ -41,31 +42,53 @@ body{
     gap: 12px;
 }
 
-.numPad button{ 
-    flex:1;
-    border-radius: 10px;
-    border: 3px solid darkgrey;
-    font-size: 32px;
-
-}
-
-.section1, .section2, .section3, .section4{
+.section1, .section2, .section3{
     flex:1;
     display: flex;
     gap: 12px;
 }
 
-.section4 .leftNumPad{
+
+.section4{
+    display: flex;
+    gap: 12px;
+    flex:2 0 0}
+
+.numPad button{ 
+    flex:1;
+    border-radius: 120px;
+    background: rgb(88, 88, 91);
+    color:white;
+    border: none;
+    font-size: 24px;
+
+}
+
+.section1 button{
+    background: rgb(17, 12, 14);
+}
+
+.leftNumPad{
     flex: 3 1 0;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.section4 .equalButton{
+.leftNumPad div{
+    display:flex;
+    flex:1;
+    gap: 12px;
+}
+
+
+.equalButton{
     flex: 1 1 0;
     display: flex;
     gap: 12px;
+}
+.equalButton button{
+    background: rgb(241, 92, 42);
 }
 
 
